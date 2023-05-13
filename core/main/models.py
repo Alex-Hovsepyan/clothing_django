@@ -164,4 +164,39 @@ class Product(models.Model):
     img = models.ImageField('Name', upload_to='images')
     name = models.CharField('Name', max_length=50)
     text = models.TextField('Text')
-    price = models.CharField('Price', max_length=50)
+    price = models.PositiveIntegerField('Price')
+    datetime = models.DateField('Datetime', auto_now=True)
+
+    class Meta:
+
+        ordering = ('-datetime',)
+
+class HomeTitle(models.Model):
+
+    title = models.CharField('Title', max_length=50)
+    subtitle = models.CharField('Subtitle', max_length=60)
+    img = models.ImageField('Background Image', upload_to='images')
+
+    def __str__(self) -> str:
+        return self.title
+    
+class HomeProductTitle(models.Model):
+
+    title = models.CharField('Title', max_length=50)
+    subtitle = models.CharField('Subtitle', max_length=50)
+
+class HomeContent(models.Model):
+
+    title = models.CharField('Title', max_length=50)
+    subtitle1 = models.CharField('Subtitle 1', max_length=50)
+    text1 = models.TextField('Text 1')
+    info1 = models.CharField('Info 1', max_length=100)
+    info2 = models.CharField('Info 2', max_length=100)
+    info3 = models.CharField('Info 3', max_length=100)
+    info4 = models.CharField('Info 4', max_length=100)
+    info5 = models.CharField('Info 5', max_length=100)
+    btn_name1 = models.CharField('Button Name 1', max_length=40)
+    img = models.ImageField('Image', upload_to='images')
+    subtitle2 = models.CharField('Subtitle 2', max_length=50)
+    text2 = models.TextField('Text 2')
+    btn_name2 = models.CharField('Button Name 2', max_length=40)

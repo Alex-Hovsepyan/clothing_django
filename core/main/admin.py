@@ -3,6 +3,8 @@ from .models import Header, Footer
 from .models import AboutPage, Team, AboutContent, Partner
 from .models import ProductTitle, ProductCategory, Product
 from .models import Contact, ContactInfo, ContactPost, Customer
+from .models import HomeTitle, HomeProductTitle, HomeContent
+# from .models import Cart
 # Register your models here.
 
 admin.site.register(Header)
@@ -22,3 +24,8 @@ admin.site.register(ContactPost)
 admin.site.register(Customer)
 admin.site.register(ProductCategory)
 admin.site.register(Product)
+
+
+admin.site.register(HomeTitle)
+admin.site.register(HomeProductTitle)
+admin.site.register(HomeContent)

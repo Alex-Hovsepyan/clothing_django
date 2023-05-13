@@ -5,9 +5,10 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
 from .models import Header, Footer
 from .models import AboutPage, Team, AboutContent, Partner
-from .models import ProductTitle, ProductCategory
+from .models import ProductTitle, ProductCategory, Product
 from .models import Contact, ContactInfo, ContactPost, Customer
 from .forms import ContactModelForm
+from .models import HomeTitle, HomeProductTitle, HomeContent
 
 # Create your views here.
 
@@ -17,10 +18,20 @@ def double_content():
     return [header_content, footer_content]
 
 def index(request):
+    product_category = ProductCategory.objects.all()
+    home_title = HomeTitle.objects.all()
+    home_product_title = HomeProductTitle.objects.all()[0]
+    home_content = HomeContent.objects.all()[0]
+    prod = Product.objects.order_by('-datetime')[::-1]
     return render(request, 'main/index.html', context={
         'link':'index',
         'header_content':double_content()[0],
         'footer_content':double_content()[1],
+        'home_title':home_title,
+        'home_product_title':home_product_title,
+        'product_category':product_category,
+        'home_content':home_content,
+        'prod':prod
     })
     
 def products(request):
@@ -84,6 +95,7 @@ def index_detail(request, id):
         'product_title':product_title,
         'product_category':product_category,
 	    'prod_list':prod_list,
+        
     })
 
 

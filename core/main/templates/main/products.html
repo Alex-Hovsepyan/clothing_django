@@ -24,7 +24,7 @@
               <ul>
                   <a href=""><li class="active" data-filter="*">All Products</li></a>
                   {% for i in product_category %}
-                    <a href="{% url 'index_detail' i.id %}"><li>{{ i.name }}</li></a>
+                    <a href="{% url 'index_detail' i.id %}"><li data-filter="*">{{ i.name }}</li></a>
                     <!-- <li data-filter=".dev">Flash Deals</li>
                     <li data-filter=".gra">Last Minute</li> -->
                   {% endfor %}
@@ -38,7 +38,7 @@
                         {% for j in i.cat_prod.all %}
                             <div class="col-lg-4 col-md-4 all des">
                                 <div class="product-item">
-                                  <a href="#"><img src="{{ j.img.url }}" alt=""></a>
+                                  <a href="{% url 'products' %}"><img src="{{ j.img.url }}" alt=""></a>
                                   <div class="down-content">
                                     <a href="#"><h4>{{ j.name }}</h4></a>
                                     <h6>{{ j.price }}</h6>
@@ -56,6 +56,8 @@
                             </div>
                         {% endfor %}
                     {% endfor %}
+                    
+  
                     <!-- <div class="col-lg-4 col-md-4 all des">
                       <div class="product-item">
                         <a href="#"><img src="assets/images/product_01.jpg" alt=""></a>
@@ -174,6 +176,13 @@
               <li><a href="#">3</a></li>
               <li><a href="#">4</a></li>
               <li><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
+              <!-- {% for i in product_category %}
+                {% if  forloop.counter > 1 %}
+                  
+                {% else %}        
+                  {{ forloop.counter }}
+                {% endif %}        
+                    {% endfor %} -->
             </ul>
           </div>
         </div>
